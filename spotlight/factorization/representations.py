@@ -43,6 +43,7 @@ class HybridContainer(nn.Module):
         dot = (user_representation * item_representation).sum(1)
         user_bias = user_bias.view(-1)
         item_bias = item_bias.view(-1)
+
         return dot + user_bias + item_bias
 
 
