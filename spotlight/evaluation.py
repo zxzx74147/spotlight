@@ -120,6 +120,6 @@ def rmse_score(model, test):
         The RMSE score.
     """
 
-    predictions = model.predict(test.user_ids, test.item_ids)
+    predictions = model.predict(test.user_ids, item_ids=test.item_ids,item_features=test.item_features)
 
     return np.sqrt(((test.ratings - predictions) ** 2).mean())

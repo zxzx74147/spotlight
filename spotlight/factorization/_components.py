@@ -67,7 +67,8 @@ def _slice_or_none(arg, slc):
         return arg[slc]
 
 def get_features(features,ids):
-
+    if features is None:
+        return None
     if isinstance(ids, Variable):
         item_ids = ids.data
 
