@@ -310,13 +310,13 @@ class ImplicitFactorizationModel(object):
                                                   self._num_items,
                                                   self._use_cuda)
 
-        (user_features,
-         context_features,
-         item_features) = _predict_process_features(user_features,
-                                                    context_features,
-                                                    item_features,
-                                                    len(item_ids),
-                                                    self._use_cuda)
+        # (user_features,
+        #  context_features,
+        #  item_features) = _predict_process_features(user_features,
+        #                                             context_features,
+        #                                             item_features,
+        #                                             len(item_ids),
+        #                                             self._use_cuda)
 
 
         out = self._net(user_ids,
