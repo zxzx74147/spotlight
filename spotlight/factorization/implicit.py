@@ -11,7 +11,7 @@ import torch.optim as optim
 from torch.autograd import Variable
 
 from spotlight.helpers import _repr_model
-from spotlight.factorization._components import (_predict_process_features,
+from spotlight.factorization._components import (_predict_process_features,get_features,
                                                  _predict_process_ids)
 from spotlight.losses import (adaptive_hinge_loss,
                               bpr_loss,
@@ -245,7 +245,7 @@ class ImplicitFactorizationModel(object):
                 self._optimizer.zero_grad()
 
                 loss = self._loss_func(positive_prediction, negative_prediction)
-                epoch_loss += loss.data[0]
+                epoch_loss += loss.data[0].item()
 
                 loss.backward()
                 self._optimizer.step()
@@ -320,8 +320,12 @@ class ImplicitFactorizationModel(object):
 
         out = self._net(user_ids,
                         item_ids,
-                        user_features,
+                        get_features(
+                            user_features,user_ids
+                        ),
                         context_features,
-                        item_features)
+                        get_features(
+                            item_features, item_ids
+                        ),)
 
         return cpu(out.data).numpy().flatten()

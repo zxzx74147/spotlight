@@ -56,3 +56,19 @@ def _predict_process_features(user_features, context_features, item_features,
     item_features = _fnc_or_none(item_features, fnc)
 
     return user_features, context_features, item_features
+
+def _slice_or_none(arg, slc):
+
+    if arg is None:
+        return None
+    elif isinstance(arg, tuple):
+        return tuple(x[slc] for x in arg)
+    else:
+        return arg[slc]
+
+def get_features(features,ids):
+
+    if isinstance(ids, Variable):
+        item_ids = ids.data
+
+    return _slice_or_none(features, item_ids)
