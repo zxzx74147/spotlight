@@ -49,7 +49,7 @@ class HybridContainer(nn.Module):
 
 class FeatureNet(nn.Module):
 
-    def __init__(self, input_dim, output_dim, bias=False, nonlinearity='tanh'):
+    def __init__(self, input_dim, output_dim, bias=False, nonlinearity='relu'):
 
         super(FeatureNet, self).__init__()
 
