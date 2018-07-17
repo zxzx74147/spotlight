@@ -71,4 +71,5 @@ def get_features(features,ids):
     if isinstance(ids, Variable):
         item_ids = ids.data
 
-    return _slice_or_none(features, item_ids)
+    ret =  _slice_or_none(features, item_ids)
+    return torch.from_numpy(ret.reshape(len(ids),-1))
