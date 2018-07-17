@@ -104,9 +104,9 @@ class BilinearNet(nn.Module):
 
         self.embedding_dim = embedding_dim
 
-        self.user_embeddings = ScaledEmbedding(num_users, embedding_dim,
+        self.user_embeddings = ScaledEmbedding(num_users, embedding_dim,max_norm = 1,
                                                sparse=sparse)
-        self.item_embeddings = ScaledEmbedding(num_items, embedding_dim,
+        self.item_embeddings = ScaledEmbedding(num_items, embedding_dim,max_norm = 1,
                                                sparse=sparse)
         self.user_biases = ZeroEmbedding(num_users, 1, sparse=sparse)
         self.item_biases = ZeroEmbedding(num_items, 1, sparse=sparse)
