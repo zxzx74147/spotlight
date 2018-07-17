@@ -318,6 +318,7 @@ class ImplicitFactorizationModel(object):
                                                     len(item_ids),
                                                     self._use_cuda)
 
+
         out = self._net(user_ids,
                         item_ids,
                         get_features(
