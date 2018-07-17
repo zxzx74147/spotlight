@@ -322,11 +322,11 @@ class ImplicitFactorizationModel(object):
         out = self._net(user_ids,
                         item_ids,
                         get_features(
-                            user_features,user_ids
+                            user_features,user_ids,self._use_cuda
                         ),
                         context_features,
                         get_features(
-                            item_features, item_ids
+                            item_features, item_ids,self._use_cuda
                         ),)
 
         return cpu(out.data).numpy().flatten()
