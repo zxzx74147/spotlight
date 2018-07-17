@@ -2,6 +2,8 @@ import torch.nn as nn
 
 
 class ScaledEmbedding(nn.Embedding):
+    def __init__(self):
+        super(ScaledEmbedding,self).__init__(max_norm = 1.0,norm_type = 2)
 
     def reset_parameters(self):
         self.weight.data.normal_(0, 1.0 / self.embedding_dim)
